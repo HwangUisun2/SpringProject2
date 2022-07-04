@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+/* login, out ------- */
+#frm_login{
+	position: relative;
+	line-height: 1.5em;
+	padding : 50px;
+	border:6px solid #99f;
+	border-radius: 10px;
+	width:420px;
+	margin:100px auto;
+}
+#frm_find{
+	position: relative;
+	line-height: 1.5em;
+	padding : 50px;
+	border:6px solid #99f;
+	border-radius: 10px;
+	width:450px;
+	margin:100px auto;
+}	
+#frm_find > h2{
+	text-align: center;
+	margin-bottom:20px;
+}
+#frm_find input[type=button]{
+	margin-top:10px;
+	width:120px;
+	height:40px;
+}
+#frm_login label, #frm_find label{
+	display: inline-block;
+	width:75px;
+	text-align: right;
+}
+#frm_login #btnLogin2 {
+	position: absolute;
+	left:272px;
+	top:78px;
+	width:70px;
+	height:42px;
+}
+
+/* member input ------------- */
+#member{
+	width: 500px;
+	padding:20px;
+	margin:30px auto;
+	line-height: 1.5em;
+}
+#member>h1{
+	margin-bottom:30px;
+}
+#member>#frm_member>label{
+	display: inline-block;
+	width:70px;
+	text-align: right;
+}
+
+#member>#frm_member>button{
+	padding:3px 12px;
+}
+
+/* member list -------------------------- */
+#member_list{
+	width:1200px;
+	padding:20px;
+	margin:30px auto;
+	line-height: 1.5em;
+}
+#member_list>#frm_member{
+	text-align:right;
+}
+#member_list>#list>.title{
+	background-color: #000;
+	color:#fff;
+}
+#member_list span{ 
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;	
+}
+
+#member_list  .no{ 
+	width: 100px; 
+	text-align: right;
+	padding-right:20px;
+}
+#member_list  .id{ width: 110px; }
+#member_list  .mName{ width: 90px; }
+#member_list  .gender{ width: 65px; }
+#member_list  .phone{ width: 120px; }
+#member_list  .address{ width: 230px; }
+#member_list  .email{ width: 180px; }
+#member_list  .zipcode{ width: 80px; }
+#member_list  .pwd{ width: 80px; }
+
+#member_list .item:nth-child(5n){
+	border-bottom : 1px solid #ccc;
+}
+
+#member_list .item:last-child{
+	border-bottom : 2px solid #ccc;
+}
+
+#member_list .item:hover{
+	background-color: #ddd;	
+	cursor: pointer;
+}
+#member_list .paging{
+	text-align: center;
+}
+#member_list .paging>button{
+	padding:2px 5px;
+	border-radius: 9px;
+	border:1px groove #ccc;
+	font-size:10pt;
+}
+
+#member_list .paging>button:hover{
+	background-color:#bbb;
+	cursor: pointer;
+}
+
+
+
+

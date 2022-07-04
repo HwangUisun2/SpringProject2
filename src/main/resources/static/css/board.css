@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+#board {
+	width: 900px;
+	margin:20px auto;
+	line-height: 1.4em;
+}
+
+#board h1{
+	margin:50px 0;
+}
+
+#board .frm_board label{
+	display: inline-block;
+	width:65px;
+}
+#board .frm_board input[name=subject]{
+	width:450px;
+}
+#board .frm_board textarea{
+	width:520px;
+	height:200px;
+	margin:4px 0;
+}
+#board .frm_board .attList{
+	border:2px dotted #00f;
+	height:150px;
+	margin:4px 0;
+	overflow: scroll;
+}
+
+#board .frm_board .attList>div{
+	display: inline-block;
+	width: 280px;
+		
+}	
+
+#board .delAttFile{
+	color:red;
+	padding:0px 6px;
+	border:0;
+	
+	
+}
+#board .btns{
+	margin-left:220px;
+}
+
+/* board_list --------- */
+#board_list{
+	width:800px;
+	margin:20px auto;
+	border:3px solid #ddd;
+	border-radius: 15px;
+	padding:10px;
+	box-shadow: 3px 3px 5px #ccc;
+}
+#board_list .frm_board_list{
+	text-align: right;
+	margin-bottom:3px;
+}
+#board_list .title{
+	background-color: #f33;
+	padding:2px;
+	color:#ff0;
+}
+#board_list span{
+	display: inline-block;
+}
+#board_list .sno{ width:90px;}
+#board_list .subject{ width:350px;}
+#board_list .nal{ width:140px;}
+#board_list .id{ width:100px;}
+#board_list .hit{ width:60px;}
+
+#board_list .item:last-child{
+	border-bottom:2px solid #aaa;
+	margin:5px 0;
+}
+#board_list .item:hover{
+	background-color:#ccc;
+	cursor: pointer;
+}
+
+
+
+#board_list .btns{
+	text-align: center;
+}
+#board_list .btns>button{
+	border:0;
+	border-radius:20px;
+	padding:2px 7px;
+}
+
+/* view --------------------------- */
+#board .doc{
+	min-height: 200px;
+	background-color : #eeee;
+	border : 4px solid #ccc;
+	border-radius: 8px;
+	margin:20px 0;
+	padding:20px;
+	
+	
+}
+
+
+
+
+
+/* spinner ------------------ */
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.spinner:before {
+  content: '';
+  z-index:999;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #000;
+  animation: spinner .6s linear infinite;
+}
+
+
+
+
+
+
+
+
+

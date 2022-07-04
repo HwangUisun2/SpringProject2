@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='com.my.mybatis.BoardMapper'>
+
+	<insert id='insert' parameterType='BoardVo'>
+	   insert into board(sno, grp, seq, deep, hit, subject, doc, id, nal)
+		values( getSerial('i'), getSerial(''), 0, 0, 0, 
+		   #{subject}, #{doc}, #{id}, #{nal} ) 
+	</insert>
+	
+	<insert id='insertAtt' parameterType='BoardAtt'>
+		insert into boardAtt(pSno, oriFile, sysFile) values
+		<foreach collection="list" item='vo' separator=",">
+			( #{vo.pSno}, #{vo.oriFile}, #{vo.sysFile}  )
+		</foreach>
+	</insert>
+	
+	<insert id='repl' parameterType='BoardVo'>
+		insert into board(sno, grp, seq, deep, 
+		           hit, subject, doc, id, nal)
+		values(getSerial('i'), #{grp}, ${seq}+1, ${deep}+1,
+		           0, #{subject}, #{doc}, #{id}, #{nal} )
+	</insert>
+	
+
+	<select id='totSize' parameterType='Page' resultType='Integer'>
+		select count(sno) totSize from board
+		where subject like '%${findStr}%'
+		or    doc     like '%${findStr}%'
+	</select>
+	
+	<select id='select' parameterType='Page' resultType='BoardVo'>
+		select sno, grp, seq, deep, hit, nal, id, getAttCnt(sno) attcnt,
+       	concat(  lpad('┗', deep*12, <![CDATA['&nbsp;']]> ), subject  ) subject
+		from board 
+		where subject like '%${findStr}%'
+		or    doc     like '%${findStr}%'
+		order by grp desc, seq asc
+		limit ${startNo-1}, ${listSize}
+	</select>
+	
+	
+	<select id='getSno' resultType='Integer'>
+		select getSerial('') from serial
+	</select>
+	
+	<select id='view' parameterType='Integer' resultType='BoardVo'>
+		select * from board where sno=${_parameter}
+	</select>
+	
+	<select id='attList' parameterType='Integer' resultType='BoardAtt'>
+		select * from boardAtt where pSno = ${_parameter}
+	</select>
+	
+	<update id='hitUp' parameterType="Integer">
+		update board set hit=hit+1 where sno=${_parameter}
+	</update>
+	
+	<update id='update' parameterType="BoardVo">
+		update board set nal=#{nal}, subject=#{subject}, doc=#{doc}
+		where sno=#{sno}
+	</update>
+	
+	<update id='seqUp' parameterType="BoardVo">
+		update board set seq=seq+1
+		where grp=#{grp} and seq>#{seq}
+	</update>
+	
+	
+	<delete id='deleteAtt' parameterType='BoardAtt'>
+		delete from boardAtt
+		<where>
+			<foreach collection="list" item='att' separator="or">
+				( psno=#{att.pSno} and sysFile=#{att.sysFile} )
+			</foreach>
+		
+		</where>
+	
+	</delete>
+	<delete id='delete' parameterType='Integer'>
+		delete from board where sno = #{_parameter}	
+	</delete>
+
+
+</mapper>
